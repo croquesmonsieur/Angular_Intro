@@ -1,0 +1,45 @@
+{{ friend | json }}
+<form (ngSubmit)="onSubmit()" #friendForm="ngForm" novalidate>
+  <input [(ngModel)]="friend.firstname" type="text" placeholder="Firstname" name="firstname" required="required" #firstname="ngModel" pattern="[a-zA-Z]*">
+  <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
+    Your firstname is required!
+  </div>
+  <input [(ngModel)]="friend.lastname" type="text" placeholder="Lastname" name="lastname" required="required" #lastname="ngModel" pattern="[a-zA-Z]*">
+  <div [hidden]="lastname.valid || lastname.pristine" class="alert alert-danger">
+    Your lastname is required!
+  </div>
+  <input [(ngModel)]="friend.email" type="email" placeholder="email" name="email" required="required" #email="ngModel">
+  <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+    A valid email-address is required!
+  </div>
+  <input [(ngModel)]="friend.phoneNumber" type="number" placeholder="Phone number" name="telphone" required="required" #telphone="ngModel" pattern="[0-9]*">
+  <div [hidden]="telphone.valid || telphone.pristine" class="alert alert-danger">
+    A real phone number is required!
+  </div>
+  <select name="devLang" [(ngModel)]="friend.languageArray" required="required" #devLang="ngModel">
+    <option *ngFor = "let lang of languageArray" [value]="lang">{{lang}}</option>
+  </select>
+  <div [hidden]="devLang.valid || devLang.pristine" class="alert alert-danger">
+    You must choose a favorite coding language!
+  </div>
+  <button type="submit" name="submit" [disabled]="!friendForm.form.valid">Push it!</button>
+</form>
+<div class="friendsTable">
+<table>
+  <thead>SuperduperFriends</thead>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Telephone number</th>
+    <th>Preferred Coding Language</th>
+  </tr>
+  <tr *ngFor="let friend of allFriends">
+    <td>{{friend.firstname}}</td>
+    <td>{{friend.lastname}}</td>
+    <td>{{friend.email}}</td>
+    <td>{{friend.phoneNumber}}</td>
+    <td>{{friend.languageArray}}</td>
+  </tr>
+</table>
+</div>

@@ -1,0 +1,26 @@
+.ng-valid[required], .ng-valid.required  {
+    border: 5px solid #42A948;
+}
+
+.ng-invalid:not(form)  {
+    border: 5px solid #a94442;
+}
+
+input{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.friendsTable{
+  border: 2px solid black;
+  background-color: rgba(222, 125, 32, 0.3);
+}
+
+thead{
+  text-align: center;
+}
+
+td{
+  padding: 10px;
+}
